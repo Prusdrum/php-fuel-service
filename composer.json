@@ -2,5 +2,23 @@
     "require": {
         "guzzlehttp/guzzle": "~6.0@dev",
         "slim/slim": "^3.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^7"
+    },
+    "autoload": {
+        "psr-4": {
+            "Fuel\\": "src/"
+        },
+        "psr-0": {
+            "Fuel\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Fuel\\": [
+                "test/unit"
+            ]
+        }
     }
 }

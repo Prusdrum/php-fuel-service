@@ -2,9 +2,19 @@
 use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
 
-require '../../vendor/autoload.php';
+use Slim\Container;
+use Slim\App;
+use GuzzleHttp\Client as HttpClient;
 
-$app = new \Slim\App;
+$container = new Container();
+
+$container['HttpClient'] = function() {
+    return new HttpClient();
+};
+
+$app = new App($container);
+
+
 $app->get('/hello/{name}', function (Request $request, Response $response, array $args) {
     $name = $args['name'];
     $response->getBody()->write("Hello, $name");
